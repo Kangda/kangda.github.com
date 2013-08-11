@@ -10,7 +10,7 @@ paginate: 8
 permalink: /:title
 
 title: Kangda's Blog
-url: http://kang-da.tk
+url: http://kangda.github.io
 feed: /atom.xml
 
 redcarpet:
