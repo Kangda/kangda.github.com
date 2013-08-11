@@ -1,0 +1,17 @@
+safe: false
+auto: true
+
+source: .
+destination: ./_site
+
+markdown: redcarpet
+pygments: true
+paginate: 8
+permalink: /:title
+
+title: Kangda's Blog
+url: http://kang-da.tk
+feed: /atom.xml
+
+redcarpet:
+    extension: []
