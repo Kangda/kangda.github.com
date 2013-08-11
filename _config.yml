@@ -3,8 +3,9 @@ auto: true
 
 source: .
 destination: ./_site
+baseurl: 
 
-markdown: redcarpet
+markdown: rdiscount
 pygments: true
 paginate: 8
 permalink: /:title
