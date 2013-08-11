@@ -1,9 +1,9 @@
-safe: false
+safe: true
 auto: true
 
 source: .
 destination: ./_site
-baseurl: 
+baseurl: /
 
 markdown: rdiscount
 pygments: true
@@ -11,7 +11,7 @@ paginate: 8
 permalink: /:title
 
 title: Kangda's Blog
-url: http://kangda.github.io
+url: http://kang-da.tk
 feed: /atom.xml
 
 redcarpet:

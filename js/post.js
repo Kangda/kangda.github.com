@@ -27,7 +27,7 @@ $(document).ready(function(){
     //**评论的代码也删掉哦***
     window.disqus_shortname = 'kangdablog'; // required: replace example with your forum shortname
     $('#disqus_container .comment').on('click',function(){
-        $(this).html('加载中...');
+        $(this).html('Loading...');
         var that = this;
         $.getScript('http://' + disqus_shortname + '.disqus.com/embed.js',function(){$(that).remove()});
     });
@@ -38,7 +38,7 @@ $(document).ready(function(){
         var href = $(this).attr('href');
         if(href){
             if(href.indexOf('#') == 0){
-            }else if ( href.indexOf('/') == 0 || href.toLowerCase().indexOf('beiyuu.com')>-1 ){
+            }else if ( href.indexOf('/') == 0 || href.toLowerCase().indexOf('kang-da.tk')>-1 ){
             }else if ($(element).has('img').length){
             }else{
                 $(this).attr('target','_blank');
