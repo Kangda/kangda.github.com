@@ -1,0 +1,127 @@
+---
+date: 2012-04-06 15:33:00+00:00
+layout: post
+title: Python Study
+categories: blog
+tags:
+- decorator
+- property
+- python
+description: Python学习扎记
+---
+
+python的built-in函数property()可以为[New Style Class](http://docs.python.org/glossary.html#term-new-style-class)建立一个属性，其定义如下：
+
+	property([fget[, fset[, fdel[, doc]]]])
+
+其中fget为该属性的获取函数，fset为设置函数，fdel为属性的删除函数，doc为属性的文字说明
+
+有一段代码可以说明property的使用方法：
+
+    
+    class C(object):
+        def __init__(self):
+            self._x = None
+    
+        def getx(self):
+            return self._x
+        def setx(self, value):
+            self._x = value
+        def delx(self):
+            del self._x
+        x = property(getx, setx, delx, "I'm the 'x' property.")
+
+
+从上面的代码可以看出，getx为属性x的获取函数，其返回值为x的值，setx负责给x赋值，而delx则是用来删除x的，最后用property函数来说明属性x的各个操作函数。
+
+多c为类C的对象的话，在访问c.x的时候，则会调用getx；c.x=32时会调用setx；del c.x的时候会调用delx
+
+而property函数也可以以修饰符的形式出现，如下：
+
+    
+    class C(object):
+        def __init__(self):
+            self._x = None
+    
+        @property
+        def x(self):
+            """I'm the 'x' property."""
+            return self._x
+    
+        @x.setter
+        def x(self, value):
+            self._x = value
+    
+        @x.deleter
+        def x(self):
+            del self._x
+
+
+在@property的说明之下的函数是getter，而后面的setter和deleter则需要显式地说明
+
+关于修饰符（decorator），这里做一些解释，修饰符主要用来封装函数的
+
+    
+    def f(...):
+        ...
+    f = staticmethod(f)
+    
+    @staticmethod
+    def f(...):
+        ...
+
+
+以上的两个表达的效果是一样的，其中staticmethod是用来修饰f的，staticmethod是以f为参数的，将在函数体内使用f，并且在最后返回一个修饰过的函数，下面的例子可能更清楚些：
+
+    
+    from time import ctime, sleep
+    
+    def tcfunc(func):
+        def wrappedFunc():
+            print '[%s] %s() called' %(
+                ctime(), func)
+            return func()
+        print "in tcfunc called"
+        print "wrapped func %s" %wrappedFunc
+        return wrappedFunc
+    
+    # decorator 仅调用tcfunc函数，该函数将foo作为一个参数，返回一个
+    # wrappedFunc函数对象，用该对象来取代foo函数在外部的调用，foo
+    # 定义的函数只能够在内部进行调用，外部无法获取其调用方式！！
+    @tcfunc         # call sequence is : tcfunc(func) --> wrappedFunc -- > func
+    def foo():
+        print "in foo called"
+        pass
+    
+    print "foo func : %s" %foo
+    
+    foo()  
+    print "-"*100
+    sleep(4)
+    
+    for i in range(2):
+        sleep(i)
+        foo()
+        print "-"*100
+
+
+其输出为：
+
+    
+    in tcfunc called
+    wrapped func <function wrappedFunc at 0x01A3DD30>
+    foo func : <function wrappedFunc at 0x01A3DD30>
+    [Thu Jan 08 00:04:35 2009] <function foo at 0x01A3DCF0>() called
+    in foo called
+    ----------------------------------------------------------------------------------------------------
+    [Thu Jan 08 00:04:39 2009] <function foo at 0x01A3DCF0>() called
+    in foo called
+    ----------------------------------------------------------------------------------------------------
+    [Thu Jan 08 00:04:40 2009] <function foo at 0x01A3DCF0>() called
+    in foo called
+    ----------------------------------------------------------------------------------------------------
+
+
+可以看出，修饰符对foo进行定义的时候就已经开始了调用，将foo作为了tcfunc的参数，并在最后返回一个新的函数wrappedFunc，该函数以后会作为foo出现，即foo函数经过这样的定义之后，其函数体变为了wrappedFunc，而且wrappedFunc中调用的foo依然是最原始的foo函数
+
+貌似这个不是很好理解，还需要在实践中熟悉
