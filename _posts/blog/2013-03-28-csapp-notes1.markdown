@@ -1,7 +1,7 @@
 ---
 date: 2013-03-28 16:18:27+00:00
 layout: post
-title: CSAPP Notes: Chapter 3
+title: CSAPP Notes--Chapter 3
 categories: blog
 tags:
 - assembly language
