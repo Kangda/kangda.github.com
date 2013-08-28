@@ -25,7 +25,7 @@ description: CSAPP阅读笔记
 主要是一张表，先把这张表放在这
 
 
-[![size of c data types in IA32](http://172.18.218.161/blog/wp-content/uploads/2013/03/size-of-c-data-types-in-IA32.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/size-of-c-data-types-in-IA32.png)
+[![size of c data types in IA32](http://kang-da.tk/images/post/size-of-c-data-types-in-IA32.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/size-of-c-data-types-in-IA32.png)
 
 
 
@@ -43,7 +43,7 @@ description: CSAPP阅读笔记
 
 下面就是这节的一个小亮点，就是汇编下关于操作数的表示，也是一张表
 
-[![operand forms](http://172.18.218.161/blog/wp-content/uploads/2013/03/operand-forms.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/operand-forms.png)
+[![operand forms](http://kang-da.tk/images/post/operand-forms.png)](http://kang-da.tk/images/post/operand-forms.png)
 
 其中，要注意的是立即数（Immediate）的部分，若想要表示立即数本身的值的话要在前面加上**$符号**，而直接写一个数字上去，会被当作是内存地址..**还有s只能取1,2,4,8（还没搞清楚为什么..）**
 
@@ -67,7 +67,7 @@ AT&T汇编和Intel汇编的一个小区别让我很有印象，AT&T的偏移量�
 
 接下来就是要介绍mov指令了，关于mov指令，同样有一张表来介绍
 
-[![data movement instructions](http://172.18.218.161/blog/wp-content/uploads/2013/03/data-movement-instructions.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/data-movement-instructions.png)
+[![data movement instructions](http://kang-da.tk/images/post/data-movement-instructions.png)](http://kang-da.tk/images/post/data-movement-instructions.png)
 
 这部分总结下来分为三个部分：操作数大小相同，操作数大小不同，栈操作。
 
@@ -75,7 +75,7 @@ AT&T汇编和Intel汇编的一个小区别让我很有印象，AT&T的偏移量�
 
 下面，要说的这个我觉得挺有用，就是mov指令两个操作数所有可能的来源（Immediate/Register/Memory）：
 
-[![five combinations](http://172.18.218.161/blog/wp-content/uploads/2013/03/five-combinations.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/five-combinations.png)
+[![five combinations](http://kang-da.tk/images/post/five-combinations.png)](http://kang-da.tk/images/post/five-combinations.png)
 
 总结下：
 
@@ -99,7 +99,7 @@ AT&T汇编和Intel汇编的一个小区别让我很有印象，AT&T的偏移量�
 
 这节主要是介绍了几个算数运算的指令，相对上一节讲的一些generalized的内容来说，这节是比较detailed的。主要是两个表，先来说第一个表
 
-[![interger arithmetic operations](http://172.18.218.161/blog/wp-content/uploads/2013/03/interger-arithmetic-operations.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/interger-arithmetic-operations.png)
+[![interger arithmetic operations](http://kang-da.tk/images/post/interger-arithmetic-operations.png)](http://kang-da.tk/images/post/interger-arithmetic-operations.png)
 
 这张表上划分了四个部分，第一个部分是一个取地址的指令；第二部分是单操作数指令（unary operation）；第三部分是双操作数指令（binary operation）；最后是移位操作。
 
@@ -117,7 +117,7 @@ AT&T汇编和Intel汇编的一个小区别让我很有印象，AT&T的偏移量�
 
 接下来讨论的是一些特别的算术操作（Special Arithmetic Operations），上这一节的第二个表格
 
-[![special arithmetic operations](http://172.18.218.161/blog/wp-content/uploads/2013/03/special-arithmetic-operations.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/special-arithmetic-operations.png)
+[![special arithmetic operations](http://kang-da.tk/images/post/special-arithmetic-operations.png)](http://kang-da.tk/images/post/special-arithmetic-operations.png)
 
 有几点要注意先：1.之前那张表的IMUL指令也是有符号数的操作
 
@@ -141,7 +141,7 @@ imull和mull的区别在于一个数对有符号数的操作，一个是对无�
 
 首先，控制总是需要判断条件的，这些条件就是一些标志寄存器，它们存着当前运算的一些状态信息，常用的标志寄存器有：
 
-[![flags](http://172.18.218.161/blog/wp-content/uploads/2013/03/flags.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/flags.png)
+[![flags](http://kang-da.tk/images/post/flags.png)](http://kang-da.tk/images/post/flags.png)
 
 其中，CF是进位标志，ZF是零标志，SF是符号标志，OF是溢出标志。OF的溢出当然是针对有符号数来说的，也就是这本书里所说的two's-complement数。
 
@@ -149,7 +149,7 @@ imull和mull的区别在于一个数对有符号数的操作，一个是对无�
 
 但是，光是这些标志寄存器还是不够的，因为我们要有相应的运算来填充标志寄存器才能让我们获得状态信息，所以，要引入一些测试或者说是判断指令：
 
-[![Comparison and test instruction](http://172.18.218.161/blog/wp-content/uploads/2013/03/Comparison-and-test-instruction1.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/Comparison-and-test-instruction1.png)
+[![Comparison and test instruction](http://kang-da.tk/images/post/Comparison-and-test-instruction1.png)](http://kang-da.tk/images/post/Comparison-and-test-instruction1.png)
 
 上面的指令执行后，然后运算过程中会根据指令的含义填充各个标志寄存器，说的直白些就是专门用来写标志寄存器的。
 
@@ -157,7 +157,7 @@ imull和mull的区别在于一个数对有符号数的操作，一个是对无�
 
 有了存有运算状态的标志寄存器以后，我们就要使用其中的状态信息，获取这些状态信息也有一组指令：
 
-[![the set instruction](http://172.18.218.161/blog/wp-content/uploads/2013/03/the-set-instruction.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/the-set-instruction.png)
+[![the set instruction](http://kang-da.tk/images/post/the-set-instruction.png)](http://kang-da.tk/images/post/the-set-instruction.png)
 
 一般，标志寄存器的值的使用有三个方式：1,根据这些状态信息来将某一个字节置1或者0；2,根据状态信息决定跳转到的程序的某个部分；3,根据状态信息选择性传输数据。
 
@@ -173,7 +173,7 @@ SET指令只有一个操作数，而且这个操作数的大小必须是**1字�
 
 先上指令
 
-[![the jump instructions](http://172.18.218.161/blog/wp-content/uploads/2013/03/the-jump-instructions.png)](http://172.18.218.161/blog/wp-content/uploads/2013/03/the-jump-instructions.png)
+[![the jump instructions](http://kang-da.tk/images/post/the-jump-instructions.png)](http://kang-da.tk/images/post/the-jump-instructions.png)
 
 其实，JUMP指令集与SET指令集挺相似的，只不过，前者的效果是跳转，后者的效果是置位。既然这样，那我们主要来看一些前两个指令，即无条件跳转指令JMP。
 
