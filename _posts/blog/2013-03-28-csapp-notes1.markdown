@@ -1,7 +1,7 @@
 ---
 date: 2013-03-28 16:18:27+00:00
 layout: post
-title: CSAPP Notes(3.1-3.6)
+title: CSAPP Notes: Chapter 3
 categories: blog
 tags:
 - assembly language
@@ -13,13 +13,13 @@ description: CSAPP阅读笔记
 一点点来，前面两章已经看过了（除了浮点数那部分），所以，从第三章开始
 
 
-## Chapter 3 Machine-Level Representation of Programs
+# Chapter 3 Machine-Level Representation of Programs
 
 
 3.1和3.2讲的是一些历史和介绍性的东西，而且已经看过了，有些还是值得记得，**以后要补上**，就先跳过了..
 
 
-### 3.3 Data Formats
+## 3.3 Data Formats
 
 
 主要是一张表，先把这张表放在这
@@ -36,7 +36,7 @@ description: CSAPP阅读笔记
 
 
 
-### 3.4 Accessing Information
+## 3.4 Accessing Information
 
 
 这节主要写的是关于mov的一些操作，即数据的访问。首先，介绍了下IA32下的寄存器，32位寄存器有%eax、%ecx、%edx、%ebx、%esi、%edi、%esp、%ebp；16位寄存器有%ax、%cx、%dx、%bx、%si、%di、%sp、%bp；8位寄存器有%ah、%al、%ch、%cl、%dh、%dl、%bh、%bl。这里面%esp、%sp是栈指针（Stack pointer），%ebp、%bp是帧指针（Frame pointer）。
@@ -94,7 +94,7 @@ AT&T汇编和Intel汇编的一个小区别让我很有印象，AT&T的偏移量�
 有要注意的一点是，不存在(Mem,Mem)的情况，就是说想要把一个内存数据转存到另一个内存地址，要分两条指令。
 
 
-### 3.5 Arithmetic and Logical Operations
+## 3.5 Arithmetic and Logical Operations
 
 
 这节主要是介绍了几个算数运算的指令，相对上一节讲的一些generalized的内容来说，这节是比较detailed的。主要是两个表，先来说第一个表
@@ -132,7 +132,7 @@ imull和mull的区别在于一个数对有符号数的操作，一个是对无�
 运算的操作指令就基本是这样了。
 
 
-### 3.6 Control
+## 3.6 Control
 
 
 这一节分为两个部分吧，一个是关于控制指令的介绍，一部分是一些高级语言里的控制语句和汇编指令的对应。
@@ -186,7 +186,7 @@ JMP可以直接跳转到某个标签（Label）这个当然不用多说的，主
 至此，汇编的指令集基本就介绍完了。
 
 
-##### Loops
+#### Loops
 
 
 在循环中，跳转指令是一定要出现的。C中提供的循环有三种：do-while、while、for。其中最基本的是do-while循环，大多数的编译器都会通过do-while循环的代码来实现其他两种循环。
@@ -259,7 +259,7 @@ while (_test-expr_)
 	} while (_test-expr_);
 	done:
 
-##### Conditional Move Instructions
+#### Conditional Move Instructions
 
 
 （TO BE CONTINUED..）
