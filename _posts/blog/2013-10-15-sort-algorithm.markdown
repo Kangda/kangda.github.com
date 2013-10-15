@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: Linux操作积累
+title: 排序算法小结
 categories: blog
 tags:
 - sort
