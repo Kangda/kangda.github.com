@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Block IO Architecture in Linux
-description: IO设备是Linux中重要的组成部分，其中Block设备又是比较常见的，如硬盘、CDROM等。而且对Block设备的研究也对接下来队Xen的IO优化做好铺垫。
 category: blog
+description: IO设备是Linux中重要的组成部分，其中Block设备又是比较常见的，如硬盘、CDROM等。而且对Block设备的研究也对接下来队Xen的IO优化做好铺垫
+
 tags:
 - Block IO
 - Linux
