@@ -49,7 +49,7 @@ $(document).ready(function(){
 
     var menuIndex = function(){
         var ie6 = ($.browser.msie && $.browser.version=="6.0") ? true : false;
-        if($('h2',$('#content')).length > 2 && !isMobile.any() && !ie6){
+        if($('h2',$('#content')).length > 1 && !isMobile.any() && !ie6){
             var h2 = [],h3 = [],tmpl = '<ul>',h2index = 0;
 
             $.each($('h2,h3',$('#content')),function(index,item){
