@@ -5,7 +5,7 @@ source: .
 destination: ./_site
 baseurl: /
 
-markdown: rdiscount
+markdown: kramdown
 pygments: true
 paginate: 8
 permalink: /:title

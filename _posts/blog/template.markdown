@@ -1,5 +1,4 @@
 ---
-date: 2012-02-26 07:01:29+00:00
 layout: post
 title: Linux操作积累
 categories: blog
