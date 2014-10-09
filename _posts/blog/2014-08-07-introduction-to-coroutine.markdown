@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python中的协程
+title: 协程
 categories: blog
 tags:
 - 协程
@@ -56,4 +56,68 @@ tags:
 
 ## 协程的实现
 
+协程是一个应用层面的概念，所以操作系统和这个没有直接的关系，所以，可以利用某种语言来实现协程，这里用了C。
+
+用C语言可以实现Python中yield的语义，代码如下：
+
+	int function(void) {
+		static int i, state = 0;
+		switch (state) {
+			case 0:
+				goto LABEL0;
+			case 1:
+				goto LABEL1;
+		}
+		LABEL0:
+		for (i = 0; i < 10; ++i) {
+			state = 1;
+			return i;
+			LABEL1:;
+		}
+	}
+
+在上面这段代码中，用了static静态变量的形式保存在每次函数执行的状态，同时利用switch语句和goto跳转实现了每次调用时对状态的判断和分支。
+
+但是在这种实现下有小小问题，就是每当新添加一个return就要手动添加一个label，这显然不是很优雅，所以，可以利用__LINE__宏的方式来实现，同时也可以简化刚才的代码流程，把label和switch结合得更加紧密一些。
+
+	int function(void) {
+		static int i, state = 0;
+		switch (state) {
+			case 0:
+			for (i  = 0; i < 10; ++i) {
+				state = __LINE__ + 2;
+				return i;
+				case __LINE__:;
+			}
+		}
+	}
+
+在上面的代码中，显示把之前的label取消掉了，利用了swtich case的形式让代码变得更紧凑些，另外，更重要的是，利用了__LINE__宏使得每增加一个return都不用写硬代码，更加一般化。
+
+接下来，既然这种结构可以做到一般化，那么不妨将它用宏的形式表现出来，使之更容易使用或者说更好看。
+
+	#define BEGIN() static int state = 0; switch (state) { case 0:
+	#define YIELD() do {state = __LINE__; return i; case __LINE__:;} while(0)
+	#define END() }
+	
+	int function(void) {
+		static int i;
+	
+		BEGIN();
+		for (i = 0; i < 10; ++i) {
+			YIELD();
+		}
+		END();
+	}
+
+这是用C的一个简单的协程实现。
+
+## Python中的协程
+
 (To be continued...)
+
+## 参考文献
+
+1. [一个“蝇量级” C 语言协程库](http://coolshell.cn/articles/10975.html)
+2. [协程的C实现](http://www.hawkwithwind.net/blog/2011/02/18/%E5%8D%8F%E7%A8%8B%E7%9A%84c%E5%AE%9E%E7%8E%B0/)
+3. [Coroutines via Enhanced Generators](http://legacy.python.org/dev/peps/pep-0342/)
