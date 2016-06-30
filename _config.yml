@@ -6,7 +6,7 @@ destination: ./_site
 baseurl: /
 
 markdown: kramdown
-pygments: true
+highlighter: rouge
 paginate: 8
 permalink: /:title
 
@@ -15,4 +15,4 @@ url: http://kang-da.tk
 feed: /atom.xml
 
 redcarpet:
-    extension: []
+extension: []
