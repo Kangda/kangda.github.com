@@ -15,4 +15,4 @@ url: http://kang-da.tk
 feed: /atom.xml
 
 redcarpet:
-extension: []
+    extension: []
